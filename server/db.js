@@ -6,12 +6,25 @@ import { randomBytes, scryptSync, timingSafeEqual } from "node:crypto";
 import { defaultGenresFor } from "./genres.js";
 
 export const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
-const dataDir = process.env.DATA_DIR || join(ROOT, "data");
+export const dataDir = process.env.DATA_DIR || join(ROOT, "data");
 mkdirSync(dataDir, { recursive: true });
 
-export const db = new DatabaseSync(join(dataDir, "academy.db"));
+/* Storage: a local SQLite file by default. When TURSO_DATABASE_URL is set (hosting whose disk is wiped, e.g. Render free),
+   the data lives in Turso and this process keeps an in-app replica: reads are local, writes go to Turso. */
+export const REMOTE = !!process.env.TURSO_DATABASE_URL;
+async function openDb() {
+  if (!REMOTE) {
+    const d = new DatabaseSync(join(dataDir, "academy.db"));
+    d.exec("PRAGMA journal_mode = WAL;");
+    return d;
+  }
+  const { default: Database } = await import("libsql");
+  const d = new Database(join(dataDir, "turso-replica.db"), { syncUrl: process.env.TURSO_DATABASE_URL, authToken: process.env.TURSO_AUTH_TOKEN || "" });
+  d.sync();
+  return d;
+}
+export const db = await openDb();
 db.exec(`
-PRAGMA journal_mode = WAL;
 PRAGMA foreign_keys = ON;
 CREATE TABLE IF NOT EXISTS users (
   id INTEGER PRIMARY KEY, name TEXT NOT NULL, email TEXT NOT NULL UNIQUE COLLATE NOCASE, pass TEXT NOT NULL,
@@ -41,6 +54,7 @@ CREATE TABLE IF NOT EXISTS videos (
 );
 CREATE INDEX IF NOT EXISTS idx_videos_pos ON videos(position, id);
 CREATE TABLE IF NOT EXISTS settings (key TEXT PRIMARY KEY, value TEXT);
+CREATE TABLE IF NOT EXISTS files (path TEXT NOT NULL, part INTEGER NOT NULL, data BLOB NOT NULL, PRIMARY KEY (path, part));
 CREATE INDEX IF NOT EXISTS idx_lessons_module ON lessons(module_id, position);
 `);
 

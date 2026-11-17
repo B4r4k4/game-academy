@@ -5,7 +5,7 @@
 import { readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { randomBytes } from "node:crypto";
-import { db, ROOT, hashPassword, now, setSetting, tx } from "./db.js";
+import { db, ROOT, dataDir, hashPassword, now, setSetting, tx } from "./db.js";
 import ar from "./seed/ar.js";
 import { defaultGenresFor } from "./genres.js";
 
@@ -157,7 +157,7 @@ export function ensureAdmin() {
   const password = process.env.ADMIN_PASSWORD || randomBytes(9).toString("base64url");
   upsertAdmin(email, password);
   if (!process.env.ADMIN_PASSWORD) {
-    writeFileSync(join(ROOT, "data", "initial-admin.txt"), `Game Academy admin\nemail: ${email}\npassword: ${password}\nChange this password after signing in, then delete this file.\n`);
+    writeFileSync(join(dataDir, "initial-admin.txt"), `Game Academy admin\nemail: ${email}\npassword: ${password}\nChange this password after signing in, then delete this file.\n`);
   }
   return { email, password: process.env.ADMIN_PASSWORD ? "(from ADMIN_PASSWORD)" : password };
 }

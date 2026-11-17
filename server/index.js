@@ -4,6 +4,7 @@ import { join, extname, basename } from "node:path";
 import { randomBytes } from "node:crypto";
 import { db, ROOT, J, now, hashPassword, checkPassword, createSession, userFromSession, destroySession, pruneSessions, publicUser, getSettings, setSetting, tx } from "./db.js";
 import { seedContent, ensureAdmin } from "./seed.js";
+import { persistFile, forgetFile, restoreFiles } from "./files.js";
 import ar from "./seed/ar.js";
 import { GENRES, GENRE_IDS } from "./genres.js";
 import { suggest, STEPS, AI_ENABLED } from "./ai.js";
@@ -16,6 +17,8 @@ const VIDEOS = join(UPLOADS, "videos");
 mkdirSync(VIDEOS, { recursive: true });
 const MAX_VIDEO = (+process.env.VIDEO_MAX_MB || 2048) * 1024 * 1024;
 
+const restored = restoreFiles(UPLOADS);
+if (restored) console.log(`Restored ${restored} uploaded file(s) from the database`);
 seedContent();
 const firstAdmin = ensureAdmin();
 pruneSessions();
@@ -328,6 +331,7 @@ function videoFields(b) {
 function dropVideoFile(src) {
   if (!src || !src.startsWith("/uploads/videos/") || db.prepare("SELECT 1 FROM videos WHERE src = ?").get(src)) return;
   rmSync(join(VIDEOS, basename(src)), { force: true });
+  forgetFile("videos/" + basename(src));
 }
 app.post("/api/admin/videos", admin, (req, res) => {
   const f = videoFields(req.body), pos = (db.prepare("SELECT MAX(position) p FROM videos").get().p ?? -1) + 1;
@@ -376,6 +380,7 @@ app.post("/api/admin/videos/upload", admin, (req, res) => {
   out.on("finish", () => {
     if (finished) return; finished = true;
     if (!size) { rmSync(path, { force: true }); return res.status(400).json({ error: "unsupported_video" }); }
+    try { persistFile("videos/" + file, path); } catch (e) { console.error(e); rmSync(path, { force: true }); return res.status(500).json({ error: "server_error" }); }
     res.status(201).json({ src: "/uploads/videos/" + file, size });
   });
   req.pipe(out);
@@ -404,12 +409,13 @@ app.post("/api/admin/media", admin, (req, res) => {
   const base = basename(str(req.body.name, 80), extname(str(req.body.name, 80))).replace(/[^\w\-]+/g, "-").slice(0, 40) || "image";
   const file = `${base}-${randomBytes(4).toString("hex")}${MIME[m[1]]}`;
   writeFileSync(join(UPLOADS, file), buf);
+  persistFile(file, join(UPLOADS, file));
   res.status(201).json({ src: "/uploads/" + file });
 });
 app.delete("/api/admin/media", admin, (req, res) => {
   const name = basename(str(req.body.src, 200));
   if (!str(req.body.src, 200).startsWith("/uploads/") || !existsSync(join(UPLOADS, name))) fail(404, "not_found");
-  unlinkSync(join(UPLOADS, name)); res.json({ ok: true });
+  unlinkSync(join(UPLOADS, name)); forgetFile(name); res.json({ ok: true });
 });
 
 /* ---------------- Admin: settings ---------------- */
