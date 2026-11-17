@@ -1,0 +1,1840 @@
+{
+ "modules": [
+  {
+   "slug": "foundations",
+   "num": "01",
+   "icon": "🎯",
+   "color": "#8b7bff",
+   "cover": "/images/3c3669ea821034094d338cc469e40275.jpg",
+   "lab": false,
+   "position": 0,
+   "title": "Foundations: What Makes a Game",
+   "tagline": "Choices, systems, loops and the player's experience.",
+   "takeaways": [
+    "Design decisions, not features: every choice needs a trade-off, uncertainty and a consequence.",
+    "Every game is built from players, an objective, rules, resources, conflict and boundaries.",
+    "Mechanics → Dynamics → Aesthetics: start from the feeling.",
+    "Prove the core loop in a grey-box prototype before adding content.",
+    "Prototype, playtest, change — then repeat."
+   ],
+   "lessons": [
+    {
+     "title": "A game is a series of interesting decisions",
+     "body": "<p>Sid Meier, designer of <em>Civilization</em>, gave the most useful definition a beginner can hold on to: a game is a series of interesting <strong>decisions</strong>. Not its graphics, not its story — the choices the player makes and what follows from them.</p>\n<p>A decision is interesting when it has three things:</p>\n<ul><li><strong>A trade-off</strong> — every option gains something and costs something. A sword that hits harder but swings slower.</li>\n<li><strong>Uncertainty</strong> — the player can't calculate the perfect answer. Will the enemy block or attack?</li>\n<li><strong>Consequence</strong> — the choice visibly changes what happens next.</li></ul>\n<p>Example: you have 100 gold. A potion (50) keeps you alive in this fight; a better sword (100) makes every future fight easier but leaves you with no safety net. Neither is always right — that is what makes it a decision, not a calculation.</p>\n<aside class=\"pitfall\"><b>Common mistake:</b> a <em>dominant strategy</em> — one option that is always best. Once players find it, every other option is dead content. If testers always pick the same thing, raise its cost or give the alternatives an advantage of their own.</aside>\n<aside class=\"try\"><b>Try it:</b> Rock–paper–scissors has no dominant option: each choice beats one and loses to one. Pick a game you play and name one decision in it. What is the trade-off? What is uncertain? What changes after you choose?</aside>",
+     "image": ""
+    },
+    {
+     "title": "The building blocks every game has",
+     "body": "<p>Board game, shooter or puzzle — almost every game is made of the same parts. Tracy Fullerton's book <em>Game Design Workshop</em> calls them the formal elements. Learn to spot them and you can take any game apart.</p>\n<ul><li><strong>Players</strong> — how many, and how do they relate? Alone against the game, against each other, or as one team.</li>\n<li><strong>Objective</strong> — what the player is trying to achieve: reach the flag, survive ten minutes, finish with the most points.</li>\n<li><strong>Rules and procedures</strong> — what you may do, how, and in what order.</li>\n<li><strong>Resources</strong> — valuable things that are limited: health, ammo, time, gold, the cards in your hand.</li>\n<li><strong>Conflict</strong> — what stands between the player and the objective: enemies, puzzles, other players, the clock.</li>\n<li><strong>Boundaries and outcome</strong> — where the game happens and how it ends: a win, a loss or a score.</li></ul>\n<p>Resources and conflict are where decisions come from. If nothing is scarce and nothing gets in the way, there is nothing to decide.</p>\n<aside class=\"try\"><b>Try it:</b> Break Snakes and Ladders down into these six elements. You will find almost no decisions — the dice decide everything. Now add one rule that gives the player a real choice (for example: once per game you may re-roll). What changed?</aside>",
+     "image": "/images/7b2fa29bbd6afeeb415c1689c2f146ad.jpg"
+    },
+    {
+     "title": "The MDA framework",
+     "body": "<p>In 2004 Robin Hunicke, Marc LeBlanc and Robert Zubek proposed the MDA framework, which splits a game into three layers:</p>\n<ul><li><strong>Mechanics</strong> — the rules and code: jump height, damage values, card costs.</li>\n<li><strong>Dynamics</strong> — the behaviour that emerges when players use those rules: rushing, hoarding, bluffing.</li>\n<li><strong>Aesthetics</strong> — the emotions the player feels.</li></ul>\n<p>The designer builds <em>from mechanics up</em>; the player experiences <em>from aesthetics down</em>. The player never sees \"damage = 12\" — they feel \"this boss is terrifying\". So start with the feeling you want, then work backwards to rules that produce it.</p>\n<p>LeBlanc lists eight kinds of fun to aim for: sensation, fantasy, narrative, challenge, fellowship, discovery, expression and submission (relaxed, pastime play). Most good games pick two or three and serve them well.</p>\n<p>Trace one example. A mechanic — \"the safe zone shrinks every two minutes\" — produces a dynamic: players are pushed together and forced to fight. That produces an aesthetic: mounting tension and challenge. Change the mechanic so the zone never shrinks, and the whole feeling collapses into players hiding.</p>\n<aside class=\"pitfall\"><b>Common mistake:</b> adding a mechanic because another game has it. First ask which feeling it serves. If you can't name one, cut it.</aside>\n<aside class=\"try\"><b>Try it:</b> From the eight kinds of fun, choose the one feeling your dream game must deliver. Write one mechanic that would create it, and the dynamic you expect players to show.</aside>",
+     "image": ""
+    },
+    {
+     "title": "The core loop",
+     "body": "<p>The <strong>core loop</strong> is the small set of actions the player repeats every minute. For an action RPG: Explore → Fight → Loot → Upgrade → Explore. For a farming game: Plant → Wait → Harvest → Sell → Buy seeds.</p>\n<p>Good games stack loops inside each other:</p>\n<ul><li><strong>Moment to moment</strong> (seconds): jump, aim, dodge — how the controls feel.</li>\n<li><strong>Core loop</strong> (minutes): the cycle above — the reason to keep playing this session.</li>\n<li><strong>Meta loop</strong> (hours and days): unlocks, new areas, long-term goals — the reason to come back tomorrow.</li></ul>\n<p>Every loop has to end in a <em>reward that feeds the next round</em>. Loot is only exciting if the upgrade makes the next fight feel different.</p>\n<p>Test the loop in a <strong>grey-box prototype</strong>: grey cubes, no art, no music. If it isn't fun like that, no amount of content will save it. If it is fun in grey boxes, everything you add later only makes it better.</p>\n<aside class=\"pitfall\"><b>Common mistake:</b> building many levels, characters and a story before the loop is proven. That is weeks of work stacked on a foundation you haven't tested.</aside>\n<aside class=\"try\"><b>Try it:</b> Write your game's core loop as 3–5 verbs joined by arrows that end back at the first verb. Then build it in the gameplay step of the <a href=\"#/studio\">Design Studio</a>.</aside>",
+     "image": ""
+    },
+    {
+     "title": "Playtest, change, repeat",
+     "body": "<p>No designer gets a game right on paper. Professionals work in a cycle — <strong>prototype → playtest → evaluate → change</strong> — repeated until the game produces the feeling they aimed for. This is called iterative design.</p>\n<p>Make your first prototype as cheap as possible. A <strong>paper prototype</strong> — cards, dice and sketches — can test your rules in an afternoon, before you write a line of code.</p>\n<p>How to run a playtest:</p>\n<ol><li>Give the player the goal only. Don't explain the controls or the strategy.</li>\n<li><strong>Watch, don't talk.</strong> Note where they hesitate, get lost or smile.</li>\n<li>Afterwards, ask open questions — \"What were you trying to do?\", \"When was it most fun?\" — not \"Did you like it?\"</li>\n<li>Change one thing, then test again.</li></ol>\n<p>Players are good at telling you <em>where</em> something feels wrong and usually bad at telling you <em>how</em> to fix it. The fix is your job.</p>\n<aside class=\"pitfall\"><b>Common mistake:</b> testing only on yourself, or on friends who want to be kind. You already know how the game works, so you can't see what confuses a newcomer.</aside>\n<aside class=\"try\"><b>Try it:</b> Feel the cycle yourself in the <a href=\"#/lab\">Play Lab</a>: change one physics value, play for 30 seconds, and decide whether it got better or worse.</aside>",
+     "image": "/images/fcdc0e9522ec3c9501b02611066c936f.jpg"
+    },
+    {
+     "title": "7 details that improve player experience",
+     "body": "<ol><li><strong>Clear objectives</strong> — a goal that is easy to spot (the glowing castle on the horizon).</li>\n<li><strong>Readable level design</strong> — clear paths, landmarks and visual cues.</li>\n<li><strong>Responsive controls</strong> — movement and actions feel natural and instant.</li>\n<li><strong>Strong feedback</strong> — every action visibly and audibly makes an impact.</li>\n<li><strong>Helpful sound cues</strong> — audio guides, warns and rewards.</li>\n<li><strong>Balanced difficulty</strong> — build challenge gradually, not too early.</li>\n<li><strong>Meaningful rewards</strong> — give players something worth working for.</li></ol>\n<p>None of these needs a big budget. They are about clarity and respect for the player's time — and every one of them is something a playtest will reveal.</p>",
+     "image": "/images/3c3669ea821034094d338cc469e40275.jpg"
+    }
+   ]
+  },
+  {
+   "slug": "gdd",
+   "num": "02",
+   "icon": "📜",
+   "color": "#2fd3c4",
+   "cover": "/images/59a14c35737e4f4ebe0430940e3070f6.jpg",
+   "lab": false,
+   "position": 1,
+   "title": "The Game Design Document",
+   "tagline": "Pitch, plan and communicate your idea.",
+   "takeaways": [
+    "Write one page before forty: the hook, genre, audience and why it is unique.",
+    "Three pillars decide what goes in and what gets cut.",
+    "Write mechanics in numbers someone else could build from.",
+    "Cut scope until it hurts, then prove one level at final quality.",
+    "Story, conflict and mechanic are one idea — and the GDD stays alive after every playtest."
+   ],
+   "lessons": [
+    {
+     "title": "Start with a one-page pitch",
+     "body": "<p>Before a 40-page document, write one page. If you can't explain your game on one page, a longer document will only hide the problem. The page must answer four questions:</p>\n<ul><li><strong>Hook</strong> — one sentence that makes someone want to play.</li>\n<li><strong>Genre and platform</strong> — \"cozy adventure for mobile\".</li>\n<li><strong>Audience</strong> — who is this for, and what else do they play?</li>\n<li><strong>Unique selling point</strong> — why this game, why now?</li></ul>\n<p>A reliable shape for the hook is: <em>In [world], you [main action] to [goal], but [obstacle].</em> For example: \"On a sinking island, you build rafts from the wreckage to rescue villagers before the tide takes the last house.\"</p>\n<p>Notice how strong key art does the same job: a small explorer, a winding path and a distant mountain promise <em>journey and discovery</em> before you read a word.</p>\n<aside class=\"pitfall\"><b>Common mistake:</b> a hook that is a feature list — \"open world, crafting, 50 weapons, multiplayer\". Features don't make anyone curious. A situation and a goal do.</aside>\n<aside class=\"try\"><b>Try it:</b> Write your hook with the formula above, in under 25 words. Read it to someone and ask one question: \"What would you do first in this game?\" If they can't answer, the hook isn't clear yet. Then put it in the pitch step of the <a href=\"#/studio\">Design Studio</a>.</aside>",
+     "image": "/images/ad47519e8a1ee6d5c4001c0450eb4562.jpg"
+    },
+    {
+     "title": "Design pillars: three phrases that say no",
+     "body": "<p>Every idea you have during development will sound good. <strong>Design pillars</strong> are how you decide which ones belong. They are three short statements of what the game must always be — and they are mainly a tool for saying <em>no</em>.</p>\n<p>Example pillars for the sinking-island game:</p>\n<ul><li><strong>Race against the tide</strong> — every minute the water rises; the pressure is always on.</li>\n<li><strong>Build from wreckage</strong> — nothing is bought; everything is found and combined.</li>\n<li><strong>Every villager counts</strong> — each one you rescue has a name and changes your camp.</li></ul>\n<p>Now test a new idea against them. \"Add a fishing mini-game\"? It slows the race and doesn't use wreckage — no. \"Rescued villagers repair rafts faster\"? It serves all three pillars — yes.</p>\n<aside class=\"pitfall\"><b>Common mistake:</b> pillars so general they rule nothing out — \"fun\", \"beautiful\", \"polished\". Every game wants those. A good pillar is specific enough that some ideas fail it.</aside>\n<aside class=\"try\"><b>Try it:</b> Write three pillars for your game, each 2–5 words with one line of explanation. Then list three ideas you've had and check each one against the pillars. Which one do you have to cut?</aside>",
+     "image": ""
+    },
+    {
+     "title": "What goes in a GDD",
+     "body": "<p>Once the one-page pitch works, expand it in four stages:</p>\n<ol><li><strong>Concept and pitch</strong> — the idea, the fantasy, the target player, the pillars.</li>\n<li><strong>Gameplay and mechanics</strong> — controls, core loop, systems (health, inventory, progression), win and lose states.</li>\n<li><strong>Art and sound</strong> — style guide, palette, reference images, audio direction.</li>\n<li><strong>Engine and tools</strong> — Godot, Unity or Unreal; how assets get into the game; who does what.</li></ol>\n<p>Format matters more than length. Use headings, short bullet points, tables for numbers and diagrams for flows. Many teams now prefer a wiki or a shared doc split into small pages over one giant file — people read a page; nobody reads eighty.</p>\n<p>Treat the GDD as a <strong>living document</strong>. After every playtest, update what changed and delete what was cut. An out-of-date GDD is worse than none, because people will build the wrong thing from it.</p>\n<aside class=\"pitfall\"><b>Common mistake:</b> writing the whole document before building anything. You will describe in detail systems that the first prototype proves don't work.</aside>\n<aside class=\"try\"><b>Try it:</b> Make four headings for your game — one per stage — and write only three bullet points under each. That is a real first GDD.</aside>",
+     "image": "/images/59a14c35737e4f4ebe0430940e3070f6.jpg"
+    },
+    {
+     "title": "Write mechanics someone else can build",
+     "body": "<p>A GDD is read mainly by the people who build the game — programmers, artists, and you three months from now. \"The jump should feel good\" gives them nothing to build. Write mechanics so they are <strong>specific and testable</strong>.</p>\n<p>Compare:</p>\n<ul><li>Vague: \"The player can jump and it feels a bit floaty.\"</li>\n<li>Buildable: \"Jump height: 3 tiles. Time to the top: 0.35 s; falling is twice as fast as rising. One jump only — no double jump until the Feather upgrade. Holding the button longer jumps higher, up to the maximum.\"</li></ul>\n<p>For each mechanic, cover four things: <strong>the input</strong> (what the player presses), <strong>the rule</strong> (what happens, with numbers), <strong>the feedback</strong> (what they see and hear) and <strong>the edge cases</strong> (what if they jump under a ceiling, or while being hit?).</p>\n<p>Put numbers that will be tuned in a table, and mark them as starting values. They will change after playtests — that is expected.</p>\n<aside class=\"pitfall\"><b>Common mistake:</b> describing a mechanic by naming another game — \"combat like Dark Souls\". Every reader imagines something different. Describe what actually happens.</aside>\n<aside class=\"try\"><b>Try it:</b> In the <a href=\"#/lab\">Play Lab</a>, tune the jump until it feels right to you. Then write those values as a mechanic spec using the four parts above.</aside>",
+     "image": "/images/2a2d3667ba7e1d63e8bf0277e6a040f2.jpg"
+    },
+    {
+     "title": "Scope: cut until it hurts",
+     "body": "<p>The most common reason games never get finished is not a lack of talent — it is <strong>scope</strong>: the game planned is far bigger than the time and team available. Beginners plan open worlds; professionals plan one excellent level.</p>\n<p>Sort every feature into three groups:</p>\n<ul><li><strong>Must have</strong> — without it there is no game (the core loop, one level, winning and losing).</li>\n<li><strong>Should have</strong> — makes it much better (a second enemy type, sound effects).</li>\n<li><strong>Could have</strong> — nice ideas for later (skins, a level editor, online play).</li></ul>\n<p>Build only the first group, then aim for a <strong>vertical slice</strong>: a small piece of the game — one level, a few minutes — at final quality, with real art, sound and feel. It proves the game works and shows anyone exactly what the finished game will be.</p>\n<p>A realistic first milestone for a beginner: one level and one mechanic done well, playable from start to finish, in about four weeks.</p>\n<aside class=\"pitfall\"><b>Common mistake:</b> \"I'll add online multiplayer later.\" Multiplayer changes the whole structure of a game; it can't be bolted on at the end. Decide on day one — and for a first game, the answer is no.</aside>\n<aside class=\"try\"><b>Try it:</b> List every feature you imagine for your game, then sort them into the three groups. Be strict: the Must list should take no more than four weeks.</aside>",
+     "image": ""
+    },
+    {
+     "title": "Case study: a pitch that tells a story",
+     "body": "<p>The <em>Running Ghost</em> pitch is structured exactly like a good GDD opener:</p>\n<ul><li><strong>Story</strong> — mischievous ghosts sneak into \"Dream Towns\" every night to collect candies.</li>\n<li><strong>Conflict</strong> — a Grim Reaper whose scythe scatters them. That is the obstacle <em>and</em> the core mechanic (avoid → collect).</li>\n<li><strong>Setting</strong> — Cemetery Island, shown as a floating diorama.</li>\n<li><strong>Characters</strong> — a collectable cast with their own stories, plus a long-term goal: rescue ghosts and grow your island.</li></ul>\n<p>Story, mechanic and progression reinforce each other: the story explains why you run, the Reaper is why running is hard, and rescued ghosts are why you come back tomorrow. That is the goal — one idea seen from three sides.</p>\n<p>Check it against this unit: the hook fits the formula (in Dream Towns, you collect candy, but the Reaper scatters you); the core loop is clear; and the scope is honest — a runner with one main mechanic.</p>\n<aside class=\"try\"><b>Try it:</b> Write the same four headings — story, conflict, setting, characters — for your own game. Then ask: is my conflict also my main mechanic? If not, change one of them until it is.</aside>",
+     "image": "/images/d891091ff8cea4d867f3d2ef66a32b1f.jpg"
+    }
+   ]
+  },
+  {
+   "slug": "mechanics",
+   "num": "03",
+   "icon": "🕹️",
+   "color": "#ff7a59",
+   "cover": "/images/2a2d3667ba7e1d63e8bf0277e6a040f2.jpg",
+   "lab": true,
+   "position": 2,
+   "title": "Core Mechanics & Game Feel",
+   "tagline": "Movement, physics, collisions — and the juice that makes it feel good.",
+   "takeaways": [
+    "Mechanics before art.",
+    "Derive jump velocity from height and gravity.",
+    "Add forgiveness: coyote time, buffering, variable jump.",
+    "Juice = squash, particles, shake, sound."
+   ],
+   "lessons": [
+    {
+     "title": "Building a platformer: the roadmap",
+     "body": "<p>A complete 2D platformer breaks down into eight stages: <strong>Get started → Core mechanics → Gameplay systems → Level design → Art & animation → Audio → Polish & UI → Build & deploy</strong>.</p>\n<p>The development flow repeats inside each stage: <em>Plan → Design → Code → Art → Audio → Test → Deploy</em>. Note that <strong>core mechanics come before art</strong>. Use coloured boxes until the movement feels right.</p>",
+     "image": "/images/2a2d3667ba7e1d63e8bf0277e6a040f2.jpg"
+    },
+    {
+     "title": "Jumping is maths you can design",
+     "body": "<p>Don't tune \"jump force\" blindly. Decide the <strong>jump height</strong> (h) and <strong>gravity</strong> (g) and derive the take-off velocity:</p>\n<pre><code>v₀ = √(2 · g · h)\ntime to apex = v₀ / g</code></pre>\n<p>Now a level designer can say \"the player jumps 3 tiles\" and it stays true when you change gravity. Most good platformers also apply <strong>extra gravity when falling</strong> so jumps feel snappy instead of floaty.</p>",
+     "image": ""
+    },
+    {
+     "title": "Forgiveness: coyote time & jump buffering",
+     "body": "<ul><li><strong>Coyote time</strong> — let the player jump for ~0.1s after running off a ledge. Players believe they pressed in time; honour that.</li>\n<li><strong>Jump buffering</strong> — remember a jump press made ~0.1s <em>before</em> landing, and fire it on touchdown.</li>\n<li><strong>Variable jump height</strong> — releasing the button early cuts upward velocity, giving the player fine control.</li></ul>\n<p>Players never notice these when they are present. They feel the controls are \"broken\" when they are missing. Try toggling them in the <a href=\"#/lab\">Game Feel Lab</a>.</p>",
+     "image": ""
+    },
+    {
+     "title": "Juice: feedback that sells the action",
+     "body": "<ul><li><strong>Squash & stretch</strong> — stretch on take-off, squash on landing (borrowed straight from classic animation).</li>\n<li><strong>Particles</strong> — dust on landing, sparkles on pickup.</li>\n<li><strong>Screen shake & hit-stop</strong> — a few frames of freeze makes hits feel heavy. Use sparingly.</li>\n<li><strong>Sound</strong> — every action needs a sound; vary the pitch slightly so repeats don't grate.</li></ul>",
+     "image": ""
+    },
+    {
+     "title": "Vector vs raster art for gameplay objects",
+     "body": "<p>Vector tools let you build characters, coins, trees and platforms as editable shapes, then export them at any resolution — the same asset serves a 4K monitor and a phone. Keep each object on its own layer so it can become its own sprite, and keep collision shapes simpler than the art.</p>",
+     "image": "/images/28abc3dd8c7814dacf00f82a1777cf61.jpg"
+    }
+   ]
+  },
+  {
+   "slug": "levels",
+   "num": "04",
+   "icon": "🗺️",
+   "color": "#7bd88f",
+   "cover": "/images/8d2272b72b5edf0309b308c9211f0036.jpg",
+   "lab": false,
+   "position": 3,
+   "title": "Level Design & World Maps",
+   "tagline": "Teach, test, twist — and guide the player's eye.",
+   "takeaways": [
+    "Teach, test, twist.",
+    "Make progression visible.",
+    "Guide with paths, contrast and landmarks."
+   ],
+   "lessons": [
+    {
+     "title": "Teach → Test → Twist",
+     "body": "<p>Introduce every mechanic in three beats:</p>\n<ol><li><strong>Teach</strong> it in a safe space where failure costs nothing.</li>\n<li><strong>Test</strong> it with real stakes.</li>\n<li><strong>Twist</strong> it by combining it with something the player already knows.</li></ol>\n<p>The first level of most classic platformers teaches running, jumping, enemies and power-ups without a single line of tutorial text.</p>",
+     "image": ""
+    },
+    {
+     "title": "The saga map: progression you can see",
+     "body": "<p>Casual mobile games use a winding path of numbered nodes. Look at what it communicates instantly:</p>\n<ul><li>Where you are (the green pin on level 9).</li>\n<li>How well you did (1–3 stars per level invites replay for mastery).</li>\n<li>What's ahead (grey locked nodes create anticipation).</li>\n<li>A river, a bridge and a log break the path into \"chapters\" for pacing.</li></ul>",
+     "image": "/images/8d2272b72b5edf0309b308c9211f0036.jpg"
+    },
+    {
+     "title": "Paths, landmarks and leading lines",
+     "body": "<p>A path is the strongest guide in level art. In this map the sandy trail carries the eye from bottom to top, crossing the river twice. Landmarks — a well, a stone flower shrine, a signpost — give the player memorable places to navigate by (\"go past the well, then left at the sign\").</p>\n<p>Use <strong>contrast</strong> (light path on darker grass), <strong>framing</strong> (trees on both sides) and <strong>reward placement</strong> to pull players where you want them.</p>",
+     "image": "/images/7b9032db95f04bf1811e84e6d97648b2.jpg"
+    },
+    {
+     "title": "World maps and biomes",
+     "body": "<p>A world map tells the player the shape of the whole adventure: green meadows, orange canyons, snowy peaks, a mechanical city. Each biome promises new enemies and mechanics. Combine it with a character-select screen and you've shown both <em>where</em> and <em>who</em> on one screen.</p>",
+     "image": "/images/260d34da2f408621cb1989b2f8c32645.jpg"
+    },
+    {
+     "title": "Board-game loops in video games",
+     "body": "<p>Dice-driven boards add randomness to a fixed route. Special tiles (stars, question marks, skull hazards, arrows) create a risk/reward decision at every roll. A day/night meter adds time pressure. This structure is a great first project: it is turn-based, easy to code and easy to balance.</p>",
+     "image": "/images/7b2fa29bbd6afeeb415c1689c2f146ad.jpg"
+    }
+   ]
+  },
+  {
+   "slug": "environment",
+   "num": "05",
+   "icon": "🏰",
+   "color": "#c98bff",
+   "cover": "/images/4f00c32a1a93de7dc6fe7fd689e114b0.jpg",
+   "lab": false,
+   "position": 4,
+   "title": "Environment Design",
+   "tagline": "Nine elements that make virtual worlds feel real.",
+   "takeaways": [
+    "Players follow light and contrast.",
+    "Props and damage tell the story.",
+    "Vary palette per biome; keep style rules constant."
+   ],
+   "lessons": [
+    {
+     "title": "The nine elements",
+     "body": "<ol><li><strong>Architecture</strong> — buildings, pathways, doors, bridges.</li>\n<li><strong>Lighting</strong> — direction, shadows, highlights.</li>\n<li><strong>Scale</strong> — objects that communicate size and distance.</li>\n<li><strong>Props</strong> — signs, furniture, containers, debris.</li>\n<li><strong>Atmosphere</strong> — fog, particles, weather, depth-of-field.</li>\n<li><strong>Textures</strong> — stone, metal, wood, glass, vegetation.</li>\n<li><strong>Color</strong> — a controlled palette that sets mood and identity.</li>\n<li><strong>Sound</strong> — wind, water, footsteps, distant activity.</li>\n<li><strong>Storytelling</strong> — clues that imply history and events.</li></ol>",
+     "image": "/images/4f00c32a1a93de7dc6fe7fd689e114b0.jpg"
+    },
+    {
+     "title": "Same elements, different style",
+     "body": "<p>The same principles apply to a bright, low-poly diorama. A small palette swatch (terracotta, sage, cream, slate) keeps everything coherent. \"Great worlds tell stories without words\" — a crosswalk, a lamp post and a café awning tell you this is a lived-in town.</p>",
+     "image": "/images/d7aa1128da5fdcb9939f9031a74b352f.jpg"
+    },
+    {
+     "title": "Lighting guides the player",
+     "body": "<p>In this isometric dungeon, warm candles mark tables and doorways while cool blue crystals mark points of interest. The broken wooden floor in the centre is the darkest, most textured area — it reads as a hazard. Players follow light; use that.</p>",
+     "image": "/images/02dcfbefe90d72b020174944578e35bf.jpg"
+    },
+    {
+     "title": "Environmental storytelling",
+     "body": "<p>A giant toppled statue, overgrown towers, a moss-covered van, a \"SHOP\" built into ruins. Without one line of dialogue you know: civilization fell, nature took over, and people are rebuilding. A familiar landmark in an unfamiliar state is one of the most powerful storytelling tools there is.</p>",
+     "image": "/images/50535a92ff115343db22d8abc8c6facb.jpg"
+    },
+    {
+     "title": "Biomes and palette variation",
+     "body": "<p>Beach, jungle village, autumn forest, desert ruins: each biome has its own dominant hue, enemies (jellyfish, scorpions) and props, but the same characters, outline style and light direction tie them together. Change the palette, keep the rules.</p>",
+     "image": "/images/079c911db9949dff4702781d6857369f.jpg"
+    }
+   ]
+  },
+  {
+   "slug": "art",
+   "num": "06",
+   "icon": "🎨",
+   "color": "#ffcf5a",
+   "cover": "/images/079c911db9949dff4702781d6857369f.jpg",
+   "lab": false,
+   "position": 5,
+   "title": "Art Styles & Assets",
+   "tagline": "Pixel, vector, low-poly, isometric, modular kits and icons.",
+   "takeaways": [
+    "Consistency beats detail.",
+    "A good character reads as a silhouette.",
+    "Build modular kits on a grid.",
+    "Icons: silhouette first, then detail shows tier."
+   ],
+   "lessons": [
+    {
+     "title": "Pick a style you can finish",
+     "body": "<p>The best art style is the one your team can produce <em>consistently</em> to the end. Common choices:</p>\n<ul><li><strong>Pixel art</strong> — low resolution, fast to iterate, strong nostalgia. Hard to do well at high detail.</li>\n<li><strong>Vector / hand-painted 2D</strong> — clean, scalable, great for mobile.</li>\n<li><strong>Low-poly 3D</strong> — flat-shaded shapes, cheap to model, very readable.</li>\n<li><strong>Isometric</strong> — 2D or 3D with a fixed diagonal camera; perfect for strategy, sims and dungeon crawlers.</li>\n<li><strong>Stylized 3D</strong> — chunky proportions, saturated colours, soft lighting.</li></ul>",
+     "image": ""
+    },
+    {
+     "title": "Character design: shape, silhouette, colour",
+     "image": "/images/18080658cb447a3e643dd2039e13cce1.jpg",
+     "body": "<p>Great characters are recognisable from their <strong>silhouette alone</strong>. Fill a character in solid black: if you can still tell who it is, the design works. Scan this chart of tiny characters — most are recognisable from a few pixels.</p>\n<ul><li><strong>Shape language</strong> — circles feel friendly, squares feel sturdy, triangles feel dangerous or clever.</li>\n<li><strong>One signature colour</strong> per hero, repeated on their UI, so players can track them in a busy fight.</li>\n<li><strong>One or two motion cues</strong> — a scarf, a cape, ears, a hood — give animators something to move.</li>\n<li><strong>Design for the role</strong> — a speedster leans forward, a guardian stands wide, a stealth character hides the face.</li></ul>\n<p>Design your own hero in the <a href=\"#/studio\">Design Studio</a>.</p>"
+    },
+    {
+     "title": "Hybrid styles: 2D pixels in a 3D world",
+     "body": "<p>Pixel-art sprites can live on a 3D tilted plane with real depth and camera blur. The result feels both retro and modern. The rule that keeps it coherent: one pixel density for everything on screen.</p>",
+     "image": "/images/fcdc0e9522ec3c9501b02611066c936f.jpg"
+    },
+    {
+     "title": "Low-poly: shape over detail",
+     "body": "<p>Stacked cone trees, chunky rocks, a straight sandy path. Low-poly scenes rely on silhouette, a limited palette and a single strong light direction. They run on any hardware and are the friendliest style for a first 3D game.</p>",
+     "image": "/images/8e3c920ba644f94924101abf5cfe2e20.jpg"
+    },
+    {
+     "title": "Modular kits",
+     "body": "<p>A modular kit is a set of pieces built on a shared grid: walls, floors, counters, chairs, food. The last panel shows the whole kit laid out; the first three show different rooms built from it. One kit → dozens of levels. Always model to a grid size and keep pivots consistent.</p>",
+     "image": "/images/e28c3ec7dbaaf46610b16d57720f5ba2.jpg"
+    },
+    {
+     "title": "Designing item icons",
+     "body": "<p>Icons must read at 64px. This sheet shows the rules: a <strong>strong silhouette</strong> per category (rings, goggles, bags, potions, books, belts, keys), and <strong>progression within a row</strong> — the plain satchel becomes an adventurer's pack with more straps, colour and detail. Players learn \"more detail = better item\" without reading a stat.</p>",
+     "image": "/images/67876e3341e10e0e6b5b0fdca2c87054.jpg"
+    },
+    {
+     "title": "Free asset sources",
+     "body": "<p>Use free assets to prototype fast and focus on gameplay: <strong>Kenney.nl</strong>, <strong>OpenGameArt</strong>, <strong>itch.io</strong> asset packs, <strong>CraftPix</strong> free section, <strong>Quaternius</strong> (3D). Always check the licence (CC0, CC-BY…) and credit authors. Pro tip: mix packs and re-colour them to a single palette so they look like one game.</p>",
+     "image": "/images/0ce14877070edf73ce6e8dd221205e3a.jpg"
+    }
+   ]
+  },
+  {
+   "slug": "ui",
+   "num": "07",
+   "icon": "🧭",
+   "color": "#5ab0ff",
+   "cover": "/images/800edad8be4259bef7e61dbc74bc3ce1.jpg",
+   "lab": false,
+   "position": 6,
+   "title": "UI, UX & HUD Design",
+   "tagline": "Information hierarchy, thumb zones and feedback.",
+   "takeaways": [
+    "Most-used = biggest and closest to the thumb.",
+    "Show state, cost and timing at a glance.",
+    "Respect the player: no dark patterns."
+   ],
+   "lessons": [
+    {
+     "title": "The anatomy of a mobile HUD",
+     "body": "<p>This mobile RPG HUD follows a near-universal layout:</p>\n<ul><li><strong>Top-left</strong> — portrait, level, health and mana: \"who am I and am I OK?\"</li>\n<li><strong>Top-centre</strong> — currencies.</li>\n<li><strong>Top-right</strong> — minimap and quest tracker: \"where am I going?\"</li>\n<li><strong>Bottom-left</strong> — virtual joystick (left thumb).</li>\n<li><strong>Bottom-right</strong> — big attack button ringed by skills (right thumb).</li>\n<li><strong>Bottom bar</strong> — menus you open between fights.</li></ul>\n<p>Frequency of use decides size and position: the attack button is the largest because it's pressed the most.</p>",
+     "image": "/images/800edad8be4259bef7e61dbc74bc3ce1.jpg"
+    },
+    {
+     "title": "Thumb zones and touch targets",
+     "body": "<p>On phones the bottom corners are easy to reach and the top-centre is hard. Put constant actions at the bottom, glanceable info at the top. Keep touch targets at least ~44–48px and spaced so a thumb can't hit two at once.</p>",
+     "image": ""
+    },
+    {
+     "title": "Battle UI: cards, cooldowns and resources",
+     "body": "<p>In this lane battler, both sides' health bars face each other at the top, the pause button sits in the middle, and the bottom row shows unit cards with their cost. A segmented energy bar fills over time — the player can see exactly when they can afford the next unit. Good battle UI shows <strong>state, cost and timing</strong> at a glance.</p>",
+     "image": "/images/df9a9615d48fa95c249a3b296a4b8220.jpg"
+    },
+    {
+     "title": "Diegetic vs non-diegetic UI",
+     "body": "<ul><li><strong>Non-diegetic</strong> — overlays only the player sees (health bars, minimap).</li>\n<li><strong>Diegetic</strong> — UI that exists in the world (a signpost reading \"CAMP\", a glowing dice, a health meter on the character's suit).</li></ul>\n<p>Diegetic UI increases immersion; non-diegetic UI is faster to read. Most games blend both.</p>",
+     "image": ""
+    },
+    {
+     "title": "Notifications: helpful or manipulative?",
+     "body": "<p>Red dots, \"first purchase\" offers and timers drive engagement — but too many create anxiety and noise. Use notification badges only for things the player can act on <em>now</em>, and never hide the real price of something.</p>",
+     "image": ""
+    }
+   ]
+  },
+  {
+   "slug": "progression",
+   "num": "08",
+   "icon": "🏆",
+   "color": "#ff6fb5",
+   "cover": "/images/9aa17f877788c113b2d7a4d70618559e.jpg",
+   "lab": false,
+   "position": 7,
+   "title": "Motivation, Progression & Gamification",
+   "tagline": "XP, quests, streaks — and why people keep playing.",
+   "takeaways": [
+    "Rewards should point at real mastery.",
+    "Competence, autonomy, relatedness.",
+    "Simple to learn, deep to master."
+   ],
+   "lessons": [
+    {
+     "title": "The progression toolkit",
+     "body": "<p>The \"Study like a video game\" sheet uses every classic system — and this platform uses them too:</p>\n<ul><li><strong>Levels</strong> break a big goal into steps.</li>\n<li><strong>XP</strong> rewards every small effort.</li>\n<li><strong>Daily quests</strong> give short-term goals.</li>\n<li><strong>Streaks</strong> reward consistency.</li>\n<li><strong>Boss battles</strong> are milestone tests.</li>\n<li><strong>Leaderboards</strong> add social comparison.</li>\n<li><strong>Rewards</strong> mark achievements.</li></ul>",
+     "image": "/images/9aa17f877788c113b2d7a4d70618559e.jpg"
+    },
+    {
+     "title": "Intrinsic vs extrinsic motivation",
+     "body": "<p>Self-Determination Theory says people are most motivated by <strong>competence</strong> (getting better), <strong>autonomy</strong> (meaningful choice) and <strong>relatedness</strong> (connection to others). XP and badges are extrinsic — they work best when they <em>point at</em> real mastery rather than replace it.</p>",
+     "image": ""
+    },
+    {
+     "title": "What the best-sellers teach us",
+     "body": "<p>Look at the top of the list: Tetris, Minecraft, GTA V, Wii Sports. They share three traits:</p>\n<ul><li><strong>Instantly understandable</strong> — you get it in seconds.</li>\n<li><strong>Deep through systems, not content</strong> — rules combine into endless situations.</li>\n<li><strong>Player expression</strong> — you build, choose and play your own way.</li></ul>\n<p>Explore more in the <a href=\"#/games\">Games Showcase</a>.</p>",
+     "image": "/images/f6252ae0a48cf7d8bc2ab29d2ab8b605.jpg"
+    }
+   ]
+  },
+  {
+   "slug": "production",
+   "num": "09",
+   "icon": "🚀",
+   "color": "#ffa94d",
+   "cover": "/images/d8dab14f2bdf0e6f35fbd07b4e6ca263.jpg",
+   "lab": false,
+   "position": 8,
+   "title": "Tools, Production & Shipping",
+   "tagline": "Engines, art and audio tools, playtesting and release.",
+   "takeaways": [
+    "Finish small games.",
+    "Cut scope early, cut again.",
+    "Watch playtesters; don't explain."
+   ],
+   "lessons": [
+    {
+     "title": "Choosing an engine",
+     "body": "<ul><li><strong>Godot</strong> — free, open source, light; excellent for 2D and growing in 3D.</li>\n<li><strong>Unity</strong> — huge ecosystem and asset store; strong for mobile and 2D/3D.</li>\n<li><strong>Unreal Engine</strong> — high-end 3D, Blueprints visual scripting.</li>\n<li><strong>GDevelop / Roblox Studio</strong> — no-code or low-code, great for first games.</li></ul>\n<p>Your first engine matters less than finishing your first game.</p>",
+     "image": ""
+    },
+    {
+     "title": "Your free toolbox",
+     "body": "<p>Art: Aseprite, Pixelorama, Krita, Blender, MagicaVoxel. Audio: Bfxr, ChipTone, Bosca Ceoil, LMMS, Audacity. Narrative: Twine, Inky. Design: Machinations (economy), Miro. Planning: Trello, Notion, HacknPlan. Levels: Tiled. Feedback: itch.io, Discord, Google Forms. See the full <a href=\"#/toolbox\">Toolbox</a>.</p>",
+     "image": "/images/d8dab14f2bdf0e6f35fbd07b4e6ca263.jpg"
+    },
+    {
+     "title": "Scope: the #1 killer of games",
+     "body": "<p>Plan the smallest version that is still fun (the <strong>vertical slice</strong>), then cut features until it fits your time — and cut again. A finished small game teaches more than an unfinished big one. Game jams (48–72 hours) are the best scope training there is.</p>",
+     "image": ""
+    },
+    {
+     "title": "Playtesting",
+     "body": "<ul><li>Watch silently; don't explain. Where they get confused is where the design is unclear.</li>\n<li>Ask \"what did you think you had to do?\" rather than \"did you like it?\"</li>\n<li>Test early with grey boxes; test often; test with people who aren't your friends.</li></ul>",
+     "image": ""
+    },
+    {
+     "title": "Build & ship",
+     "body": "<p>Optimize, fix crashes, add options (volume, controls, accessibility), then export. itch.io is the easiest place to publish your first game for free, with a page, screenshots and a short trailer. Then post-mortem: write what went right, what went wrong, and what you'll do next time.</p>",
+     "image": ""
+    }
+   ]
+  }
+ ],
+ "gallery": [
+  {
+   "src": "/images/079c911db9949dff4702781d6857369f.jpg",
+   "title": "Pixel RPG biomes",
+   "tags": [
+    "Pixel",
+    "Environment"
+   ],
+   "notes": [
+    "Four biomes, one consistent outline and light direction.",
+    "Enemies match their biome (jellyfish on beach, scorpion in desert).",
+    "Characters cast soft ellipse shadows to anchor them to the ground."
+   ]
+  },
+  {
+   "src": "/images/02dcfbefe90d72b020174944578e35bf.jpg",
+   "title": "Isometric dungeon",
+   "tags": [
+    "Isometric",
+    "3D",
+    "Environment"
+   ],
+   "notes": [
+    "Warm candles vs cool crystals guide attention.",
+    "Moss and broken planks tell age and danger.",
+    "Stairs show elevation clearly in isometric view."
+   ]
+  },
+  {
+   "src": "/images/50535a92ff115343db22d8abc8c6facb.jpg",
+   "title": "Overgrown city RPG",
+   "tags": [
+    "UI/HUD",
+    "Environment"
+   ],
+   "notes": [
+    "Environmental storytelling via a toppled landmark.",
+    "Full HUD: portrait, power, quests, minimap, skills, chat.",
+    "Party members have name tags and health bars for readability."
+   ]
+  },
+  {
+   "src": "/images/800edad8be4259bef7e61dbc74bc3ce1.jpg",
+   "title": "Mobile MMORPG HUD",
+   "tags": [
+    "UI/HUD"
+   ],
+   "notes": [
+    "Classic thumb-zone layout.",
+    "Glowing path guides the player to the next objective.",
+    "Location labels with level ranges set expectations."
+   ]
+  },
+  {
+   "src": "/images/8d2272b72b5edf0309b308c9211f0036.jpg",
+   "title": "Saga level-select map",
+   "tags": [
+    "Map",
+    "UI/HUD"
+   ],
+   "notes": [
+    "Stars encourage replay.",
+    "Current-level pin draws the eye.",
+    "Bottom bar: hammer (build), trophies, map, friends, shop."
+   ]
+  },
+  {
+   "src": "/images/7b9032db95f04bf1811e84e6d97648b2.jpg",
+   "title": "Forest path world map",
+   "tags": [
+    "Map",
+    "Environment"
+   ],
+   "notes": [
+    "Path as a leading line.",
+    "Snow appears as you go down — a visual biome transition.",
+    "Landmarks: well, shrine, signpost."
+   ]
+  },
+  {
+   "src": "/images/260d34da2f408621cb1989b2f8c32645.jpg",
+   "title": "World map & character select",
+   "tags": [
+    "Map",
+    "Key Art"
+   ],
+   "notes": [
+    "Biomes from meadow to canyon to industrial city.",
+    "Yellow road connects all zones.",
+    "Seven character cards with distinct palettes."
+   ]
+  },
+  {
+   "src": "/images/7b2fa29bbd6afeeb415c1689c2f146ad.jpg",
+   "title": "3D board game",
+   "tags": [
+    "3D",
+    "UI/HUD"
+   ],
+   "notes": [
+    "Tile colours encode meaning (star, skull, arrow).",
+    "Day/night dial adds time pressure.",
+    "Big dice button bottom-right for the thumb."
+   ]
+  },
+  {
+   "src": "/images/df9a9615d48fa95c249a3b296a4b8220.jpg",
+   "title": "Lane battler UI",
+   "tags": [
+    "UI/HUD",
+    "Map"
+   ],
+   "notes": [
+    "Opposing health bars at top.",
+    "Unit cards with costs, energy bar for timing.",
+    "Node map uses skulls for battles, a cat icon for the player."
+   ]
+  },
+  {
+   "src": "/images/fcdc0e9522ec3c9501b02611066c936f.jpg",
+   "title": "Pixel art in 3D space",
+   "tags": [
+    "Pixel",
+    "3D"
+   ],
+   "notes": [
+    "2D sprites on a tilted 3D plane.",
+    "Depth-of-field blur on edges.",
+    "Co-op score dials in the HUD."
+   ]
+  },
+  {
+   "src": "/images/8e3c920ba644f94924101abf5cfe2e20.jpg",
+   "title": "Low-poly forest path",
+   "tags": [
+    "3D",
+    "Environment"
+   ],
+   "notes": [
+    "Flat-shaded cone trees.",
+    "Single sun direction, soft shadows.",
+    "Converging path creates depth."
+   ]
+  },
+  {
+   "src": "/images/e28c3ec7dbaaf46610b16d57720f5ba2.jpg",
+   "title": "Modular 3D restaurant kit",
+   "tags": [
+    "3D",
+    "Assets"
+   ],
+   "notes": [
+    "Grid-based modular walls and floors.",
+    "One kit, many rooms (diner, pizzeria, dessert bar).",
+    "Last panel shows every piece."
+   ]
+  },
+  {
+   "src": "/images/67876e3341e10e0e6b5b0fdca2c87054.jpg",
+   "title": "RPG item icons",
+   "tags": [
+    "Assets"
+   ],
+   "notes": [
+    "One silhouette per category.",
+    "Detail increases with tier.",
+    "Consistent outline and lighting."
+   ]
+  },
+  {
+   "src": "/images/ad47519e8a1ee6d5c4001c0450eb4562.jpg",
+   "title": "Adventure key art",
+   "tags": [
+    "Key Art"
+   ],
+   "notes": [
+    "Hero seen from behind = the player's view.",
+    "Path to the mountain promises the journey.",
+    "Dark framing foliage pushes focus to the centre."
+   ]
+  },
+  {
+   "src": "/images/d891091ff8cea4d867f3d2ef66a32b1f.jpg",
+   "title": "Running Ghost pitch",
+   "tags": [
+    "Key Art",
+    "Infographic"
+   ],
+   "notes": [
+    "Pitch structure: story, setting, characters.",
+    "Cute rounded shapes vs the angular reaper.",
+    "Floating-island diorama presents the setting."
+   ]
+  },
+  {
+   "src": "/images/28abc3dd8c7814dacf00f82a1777cf61.jpg",
+   "title": "Vector graphics in game dev",
+   "tags": [
+    "Infographic",
+    "Assets"
+   ],
+   "notes": [
+    "Objects on separate layers become sprites.",
+    "Edit points, not pixels.",
+    "Same assets scale from desktop to phone."
+   ]
+  },
+  {
+   "src": "/images/3c3669ea821034094d338cc469e40275.jpg",
+   "title": "7 game design details",
+   "tags": [
+    "Infographic"
+   ],
+   "notes": [
+    "Objectives, readability, controls, feedback, sound, difficulty, rewards."
+   ]
+  },
+  {
+   "src": "/images/4f00c32a1a93de7dc6fe7fd689e114b0.jpg",
+   "title": "Environment design — 9 elements",
+   "tags": [
+    "Infographic",
+    "Environment"
+   ],
+   "notes": [
+    "Architecture, lighting, scale, props, atmosphere, textures, colour, sound, storytelling."
+   ]
+  },
+  {
+   "src": "/images/d7aa1128da5fdcb9939f9031a74b352f.jpg",
+   "title": "Environment design — 8 elements",
+   "tags": [
+    "Infographic",
+    "Environment"
+   ],
+   "notes": [
+    "Low-poly diorama with palette swatch.",
+    "\"Great worlds tell stories without words.\""
+   ]
+  },
+  {
+   "src": "/images/59a14c35737e4f4ebe0430940e3070f6.jpg",
+   "title": "GDD workflow",
+   "tags": [
+    "Infographic"
+   ],
+   "notes": [
+    "Concept → Mechanics → Art & Sound → Engine & AI tools."
+   ]
+  },
+  {
+   "src": "/images/2a2d3667ba7e1d63e8bf0277e6a040f2.jpg",
+   "title": "2D platformer roadmap",
+   "tags": [
+    "Infographic"
+   ],
+   "notes": [
+    "Eight stages from setup to deploy.",
+    "Plan → Design → Code → Art → Audio → Test → Deploy."
+   ]
+  },
+  {
+   "src": "/images/9aa17f877788c113b2d7a4d70618559e.jpg",
+   "title": "Study like a video game",
+   "tags": [
+    "Infographic"
+   ],
+   "notes": [
+    "Levels, XP, quests, streaks, bosses, leaderboards."
+   ]
+  },
+  {
+   "src": "/images/f6252ae0a48cf7d8bc2ab29d2ab8b605.jpg",
+   "title": "Best-selling games of all time",
+   "tags": [
+    "Infographic"
+   ],
+   "notes": [
+    "Source shown on the image: publisher reports & Wikipedia aggregate data."
+   ]
+  },
+  {
+   "src": "/images/d8dab14f2bdf0e6f35fbd07b4e6ca263.jpg",
+   "title": "25 free design tools",
+   "tags": [
+    "Infographic"
+   ],
+   "notes": [
+    "Prototyping, design, graphics, audio, management, playtesting."
+   ]
+  },
+  {
+   "src": "/images/0ce14877070edf73ce6e8dd221205e3a.jpg",
+   "title": "30 free 2D asset sources",
+   "tags": [
+    "Infographic",
+    "Assets"
+   ],
+   "notes": [
+    "Sprites, tilesets, FX, UI, props."
+   ]
+  },
+  {
+   "src": "/images/575670a06e353ca00bf22e763b30c5e3.jpg",
+   "title": "HUD & player feedback (before/after)",
+   "tags": [
+    "UI/HUD",
+    "Infographic"
+   ],
+   "notes": [
+    "Compare a cluttered HUD with a cleaner one.",
+    "Exercise: list what you'd remove and why."
+   ]
+  },
+  {
+   "src": "/images/093b729522a9e810b4d3b822593d4727.jpg",
+   "title": "Hero lineup: hooded heroes",
+   "tags": [
+    "Characters",
+    "Key Art"
+   ],
+   "notes": [
+    "Three silhouettes, three readable shapes: mask, hood, armour.",
+    "Cool, desaturated palette keeps attention on faces.",
+    "Overlapping figures create depth and hierarchy."
+   ]
+  },
+  {
+   "src": "/images/15fee4920dd9d409983d25652efb108e.jpg",
+   "title": "Which character are you? (zodiac chart)",
+   "tags": [
+    "Characters",
+    "Infographic"
+   ],
+   "notes": [
+    "Personality quizzes turn characters into identity.",
+    "Each card pairs a hero with traits — a pattern our hero quiz uses.",
+    "Consistent card frames make 12 very different heroes feel like one set."
+   ]
+  },
+  {
+   "src": "/images/18080658cb447a3e643dd2039e13cce1.jpg",
+   "title": "Pixel character chart",
+   "tags": [
+    "Characters",
+    "Pixel"
+   ],
+   "notes": [
+    "Dozens of heroes, each readable in a few pixels.",
+    "Silhouette and one signature colour do most of the work.",
+    "Exercise: pick three and name the shape that defines them."
+   ]
+  },
+  {
+   "src": "/images/64a2dcf7178675e3eca666961e5fed23.jpg",
+   "title": "Crossover poster",
+   "tags": [
+    "Characters",
+    "Key Art"
+   ],
+   "notes": [
+    "A central light source pulls every eye to the middle.",
+    "Mixed styles work when lighting and colour grade are shared.",
+    "Scale shows importance: closest heroes are the biggest."
+   ]
+  },
+  {
+   "src": "/images/1b45657cfb3c814db3bbbb66ab992790.jpg",
+   "title": "Crowd composition",
+   "tags": [
+    "Characters",
+    "Key Art"
+   ],
+   "notes": [
+    "Fog at the bottom unifies a crowded scene.",
+    "Bright colours (red, blue) mark the hero characters.",
+    "Faces are arranged in loose rows to avoid tangents."
+   ]
+  },
+  {
+   "src": "/images/38eb386afea361c404aab871acf40f5a.jpg",
+   "title": "Low-poly everyman",
+   "tags": [
+    "Characters",
+    "3D"
+   ],
+   "notes": [
+    "A casual avatar for life-sim and sandbox games.",
+    "Flat shading and simple shapes keep it cheap to render.",
+    "Headphones and a hoodie give personality without detail."
+   ]
+  },
+  {
+   "src": "/images/459ecc606c237323534075bc3da63893.jpg",
+   "title": "Round hero in a bright world",
+   "tags": [
+    "Characters",
+    "3D"
+   ],
+   "notes": [
+    "The rounder the shape, the friendlier it feels.",
+    "Saturated pastel palette matches the character's personality.",
+    "Small companions repeat the hero's shape language."
+   ]
+  },
+  {
+   "src": "/images/260d34da2f408621cb1989b2f8c32645.jpg",
+   "title": "Platform lineup poster",
+   "tags": [
+    "Characters",
+    "Key Art"
+   ],
+   "notes": [
+    "Layered heroes from back to front create depth.",
+    "A dark blue backdrop makes warm-coloured characters pop.",
+    "Mascots sit at the front, at the viewer's eye level."
+   ]
+  },
+  {
+   "src": "/images/548cfb7d32fc3e084665386d837063eb.jpg",
+   "title": "Mascot design: simple and expressive",
+   "tags": [
+    "Characters",
+    "3D"
+   ],
+   "notes": [
+    "Two goggles, one colour, one outfit — instantly recognisable.",
+    "A plain background puts all attention on the pose.",
+    "A wave gesture invites the player in."
+   ]
+  },
+  {
+   "src": "/images/6113575b6817695e02f79ad6103d8e7c.jpg",
+   "title": "Speedster mascot",
+   "tags": [
+    "Characters",
+    "3D"
+   ],
+   "notes": [
+    "Leaning pose and big shoes say 'fast' before it moves.",
+    "Orange stands out against green jungle backgrounds.",
+    "Exaggerated grin = attitude and personality."
+   ]
+  },
+  {
+   "src": "/images/64a2dcf7178675e3eca666961e5fed23.jpg",
+   "title": "Chibi stealth hero",
+   "tags": [
+    "Characters",
+    "Key Art"
+   ],
+   "notes": [
+    "Big head, small body: cute proportions on a dangerous archetype.",
+    "Hood and mask hide the face — the player fills it in.",
+    "Neon rain alley sets mood with a limited palette."
+   ]
+  },
+  {
+   "src": "/images/6688f7719a979339e40bd5c577791951.jpg",
+   "title": "Hooded assassin in action",
+   "tags": [
+    "Characters",
+    "Key Art"
+   ],
+   "notes": [
+    "A strong diagonal pose reads as motion.",
+    "White costume stands out against the dusty city.",
+    "Red accents (sash) draw the eye to the centre of mass."
+   ]
+  },
+  {
+   "src": "/images/02dcfbefe90d72b020174944578e35bf.jpg",
+   "title": "Action heroes collage",
+   "tags": [
+    "Characters",
+    "Key Art"
+   ],
+   "notes": [
+    "Electric blue accents tie dozens of heroes together.",
+    "Vertical composition leads the eye from top to bottom.",
+    "Most-famous heroes take the biggest, most central slots."
+   ]
+  },
+  {
+   "src": "/images/7de0f5c635de73b46ba6890fc037f128.jpg",
+   "title": "Mascot in a new role",
+   "tags": [
+    "Characters",
+    "3D"
+   ],
+   "notes": [
+    "A familiar character in a new costume — instant novelty.",
+    "Props (radio, tents, signs) tell the story of the camp.",
+    "Warm, soft lighting keeps the tone friendly."
+   ]
+  },
+  {
+   "src": "/images/7df59f3a8a179a8b365acd11c4dd925b.jpg",
+   "title": "Battle royale hero",
+   "tags": [
+    "Characters",
+    "3D"
+   ],
+   "notes": [
+    "The helmet hides the face: anyone can be this character.",
+    "Explosion behind the hero frames the silhouette.",
+    "Grey costume against fire = maximum contrast."
+   ]
+  },
+  {
+   "src": "/images/9c591068f21ce6e5f57fea2ce375c7ea.jpg",
+   "title": "Adventure party in ruins",
+   "tags": [
+    "Characters",
+    "Environment"
+   ],
+   "notes": [
+    "A party lineup shows the cast and the world in one image.",
+    "A sunset arch frames the group.",
+    "Different heights and silhouettes make each member readable."
+   ]
+  },
+  {
+   "src": "/images/dc2021517635a27544f5ac93233cd5e6.jpg",
+   "title": "Pixel swordswoman",
+   "tags": [
+    "Characters",
+    "Pixel"
+   ],
+   "notes": [
+    "A glowing blade is the brightest point — it marks her role.",
+    "Scarf and hair give two motion cues for animation.",
+    "Isometric pixel tiles ground the character in a world."
+   ]
+  }
+ ],
+ "hall": {
+  "characters": [
+   {
+    "id": "mario",
+    "name": "Mario",
+    "emoji": "🍄",
+    "year": 1981,
+    "from": "Nintendo · Shigeru Miyamoto",
+    "debut": "Donkey Kong (as \"Jumpman\")",
+    "lesson": "Designed around hardware limits: the cap avoided drawing hair, the moustache avoided a mouth, and overalls made arm movement readable in very few pixels. Constraints shaped an icon.",
+    "image": "/images/7de0f5c635de73b46ba6890fc037f128.jpg"
+   },
+   {
+    "id": "pacman",
+    "name": "Pac-Man",
+    "emoji": "🟡",
+    "year": 1980,
+    "from": "Namco · Toru Iwatani",
+    "debut": "Pac-Man",
+    "lesson": "One of the first gaming mascots. Each ghost has its own chase behaviour (direct chase, ambush ahead, flank, wander) — simple AI rules that combine into rich, readable dynamics.",
+    "image": ""
+   },
+   {
+    "id": "link",
+    "name": "Link",
+    "emoji": "🗡️",
+    "year": 1986,
+    "from": "Nintendo · Miyamoto & Tezuka",
+    "debut": "The Legend of Zelda",
+    "lesson": "Named to be the player's \"link\" to the world. A mostly silent protagonist lets players project themselves into the adventure.",
+    "image": ""
+   },
+   {
+    "id": "sonic",
+    "name": "Sonic the Hedgehog",
+    "emoji": "💨",
+    "year": 1991,
+    "from": "Sega · Naoto Ohshima & Yuji Naka",
+    "debut": "Sonic the Hedgehog",
+    "lesson": "Character as mechanic: speed is his personality, his level design and his marketing. His blue matched Sega's logo — brand and design aligned.",
+    "image": ""
+   },
+   {
+    "id": "pikachu",
+    "name": "Pikachu",
+    "emoji": "⚡",
+    "year": 1996,
+    "from": "Game Freak · Atsuko Nishida & Ken Sugimori",
+    "debut": "Pokémon Red & Green",
+    "lesson": "Simple rounded shapes, a striking yellow, and a lightning-bolt tail that reads as a silhouette. Readability at small sizes made it a global icon.",
+    "image": ""
+   },
+   {
+    "id": "kirby",
+    "name": "Kirby",
+    "emoji": "🌸",
+    "year": 1992,
+    "from": "HAL Laboratory · Masahiro Sakurai",
+    "debut": "Kirby's Dream Land",
+    "lesson": "Began as a placeholder blob — and stayed. The simplest possible shape is easy to animate, easy to draw, and easy to love. His copy ability is a whole design system.",
+    "image": "/images/459ecc606c237323534075bc3da63893.jpg"
+   },
+   {
+    "id": "samus",
+    "name": "Samus Aran",
+    "emoji": "🚀",
+    "year": 1986,
+    "from": "Nintendo · Yoshio Sakamoto & team",
+    "debut": "Metroid",
+    "lesson": "One of gaming's earliest playable heroines, revealed only at the ending. Her ability upgrades open new routes — the foundation of the \"Metroidvania\" genre.",
+    "image": ""
+   },
+   {
+    "id": "lara",
+    "name": "Lara Croft",
+    "emoji": "🏺",
+    "year": 1996,
+    "from": "Core Design · Toby Gard",
+    "debut": "Tomb Raider",
+    "lesson": "Defined 3D action-adventure: climbing, puzzle-solving tombs and acrobatic exploration. Her 2013 reboot shows how to reinvent a character with a grounded origin story.",
+    "image": ""
+   },
+   {
+    "id": "crash",
+    "name": "Crash Bandicoot",
+    "emoji": "🌀",
+    "year": 1996,
+    "from": "Naughty Dog",
+    "debut": "Crash Bandicoot",
+    "lesson": "Designed to be seen from behind. His orange colour was chosen to stand out against the game's jungle and sky backgrounds — design for the camera and the environment.",
+    "image": "/images/6113575b6817695e02f79ad6103d8e7c.jpg"
+   },
+   {
+    "id": "chief",
+    "name": "Master Chief",
+    "emoji": "🪖",
+    "year": 2001,
+    "from": "Bungie",
+    "debut": "Halo: Combat Evolved",
+    "lesson": "His face is never fully shown. The helmet becomes a mirror — the player fills the suit. A faceless hero is a powerful player-insertion technique.",
+    "image": ""
+   },
+   {
+    "id": "kratos",
+    "name": "Kratos",
+    "emoji": "🪓",
+    "year": 2005,
+    "from": "Santa Monica Studio",
+    "debut": "God of War",
+    "lesson": "Shows how a character can evolve: the 2018 reboot turned rage into fatherhood, adding emotional depth without losing the core fantasy of power.",
+    "image": ""
+   },
+   {
+    "id": "steve",
+    "name": "Steve",
+    "emoji": "⛏️",
+    "year": 2009,
+    "from": "Mojang · Markus Persson",
+    "debut": "Minecraft",
+    "lesson": "A blank-slate avatar for a game about player expression. The blocky style is also the building system — art direction and mechanics are the same thing.",
+    "image": ""
+   },
+   {
+    "id": "megaman",
+    "name": "Mega Man",
+    "emoji": "🔵",
+    "year": 1987,
+    "from": "Capcom · Keiji Inafune & team",
+    "debut": "Mega Man",
+    "lesson": "Beat a boss, gain its weapon. Players choose stage order, creating a rock-paper-scissors puzzle across the whole game.",
+    "image": ""
+   },
+   {
+    "id": "snake",
+    "name": "Solid Snake",
+    "emoji": "📦",
+    "year": 1987,
+    "from": "Konami · Hideo Kojima",
+    "debut": "Metal Gear",
+    "lesson": "Made avoiding combat the core mechanic. Stealth games turn the player's fear of being seen into tension and planning.",
+    "image": ""
+   },
+   {
+    "id": "cloud",
+    "name": "Cloud Strife",
+    "emoji": "⚔️",
+    "year": 1997,
+    "from": "Square · Tetsuya Nomura",
+    "debut": "Final Fantasy VII",
+    "lesson": "An oversized sword and spiky hair create an instantly readable silhouette. His unreliable memory shows how story can surprise players about their own character.",
+    "image": ""
+   },
+   {
+    "id": "donkeykong",
+    "name": "Donkey Kong",
+    "emoji": "🦍",
+    "year": 1981,
+    "from": "Nintendo · Shigeru Miyamoto",
+    "debut": "Donkey Kong",
+    "lesson": "One of the first games with a story told through gameplay: a villain, a damsel and a cut-scene, all in one arcade screen.",
+    "image": ""
+   }
+  ],
+  "series": [
+   {
+    "id": "s-mario",
+    "name": "Super Mario Bros.",
+    "emoji": "🍄",
+    "year": 1985,
+    "genre": "Platformer",
+    "lesson": "World 1-1 teaches running, jumping, enemies and power-ups without text — the textbook example of teaching through level design.",
+    "image": "/images/1acff3228a3a5649a62c4a7136b54808.jpg"
+   },
+   {
+    "id": "s-zelda",
+    "name": "The Legend of Zelda",
+    "emoji": "🛡️",
+    "year": 1986,
+    "genre": "Action-adventure",
+    "lesson": "Dungeons are lock-and-key puzzles: find the item, then use it to open new paths. Breath of the Wild later showed how open, systemic physics creates player creativity.",
+    "image": ""
+   },
+   {
+    "id": "s-pokemon",
+    "name": "Pokémon",
+    "emoji": "🔴",
+    "year": 1996,
+    "genre": "Creature-collecting RPG",
+    "lesson": "Two versions with different creatures turned collecting into a social activity: you had to trade to \"catch 'em all\".",
+    "image": ""
+   },
+   {
+    "id": "s-tetris",
+    "name": "Tetris",
+    "emoji": "🧱",
+    "year": 1984,
+    "genre": "Puzzle",
+    "lesson": "Seven shapes, one rule, infinite depth. Created by Alexey Pajitnov; still the best-selling game of all time across its versions.",
+    "image": ""
+   },
+   {
+    "id": "s-minecraft",
+    "name": "Minecraft",
+    "emoji": "🟩",
+    "year": 2011,
+    "genre": "Sandbox / survival",
+    "lesson": "No required goal — players set their own. Simple blocks become a creative language; the community became the content.",
+    "image": ""
+   },
+   {
+    "id": "s-gta",
+    "name": "Grand Theft Auto",
+    "emoji": "🚗",
+    "year": 1997,
+    "genre": "Open world",
+    "lesson": "Overlapping systems (police, traffic, pedestrians, vehicles) generate unscripted chaos and stories unique to each player.",
+    "image": ""
+   },
+   {
+    "id": "s-ff",
+    "name": "Final Fantasy",
+    "emoji": "💎",
+    "year": 1987,
+    "genre": "JRPG",
+    "lesson": "Each entry reinvents world, cast and combat while keeping signature motifs (crystals, chocobos, summons) — a model for a series that evolves.",
+    "image": ""
+   },
+   {
+    "id": "s-sf",
+    "name": "Street Fighter",
+    "emoji": "🥋",
+    "year": 1987,
+    "genre": "Fighting",
+    "lesson": "Street Fighter II's combos began as an unintended side-effect of its timing. The designers kept it — some of the best mechanics are discovered, not planned.",
+    "image": ""
+   },
+   {
+    "id": "s-halo",
+    "name": "Halo",
+    "emoji": "🌌",
+    "year": 2001,
+    "genre": "First-person shooter",
+    "lesson": "The \"30 seconds of fun\" idea: a short, satisfying combat loop repeated in ever-changing situations.",
+    "image": ""
+   },
+   {
+    "id": "s-sims",
+    "name": "The Sims",
+    "emoji": "🏠",
+    "year": 2000,
+    "genre": "Life simulation",
+    "lesson": "Will Wright's \"software toy\": no win condition. Players write their own stories with needs, moods and relationships.",
+    "image": ""
+   },
+   {
+    "id": "s-souls",
+    "name": "Dark Souls / Souls-like",
+    "emoji": "🔥",
+    "year": 2011,
+    "genre": "Action RPG",
+    "lesson": "Difficulty as communication. Bonfire checkpoints, learnable enemy patterns and interconnected shortcuts make every victory earned.",
+    "image": ""
+   },
+   {
+    "id": "s-ac",
+    "name": "Animal Crossing",
+    "emoji": "🍃",
+    "year": 2001,
+    "genre": "Life sim / social",
+    "lesson": "Uses the real-world clock and calendar so small daily visits feel meaningful — a gentle, low-pressure retention loop.",
+    "image": ""
+   },
+   {
+    "id": "s-cod",
+    "name": "Call of Duty",
+    "emoji": "🎖️",
+    "year": 2003,
+    "genre": "Shooter",
+    "lesson": "Fast respawn loops and unlock progression keep matches short and rewarding; the series' online systems shaped modern multiplayer design.",
+    "image": ""
+   },
+   {
+    "id": "s-metroid",
+    "name": "Metroid & Castlevania",
+    "emoji": "🗝️",
+    "year": 1986,
+    "genre": "Metroidvania",
+    "lesson": "Ability-gated exploration: you see places you can't reach yet, which turns the map into a promise.",
+    "image": ""
+   }
+  ],
+  "films": [
+   {
+    "id": "f-snowwhite",
+    "name": "Snow White and the Seven Dwarfs",
+    "emoji": "🍎",
+    "year": 1937,
+    "studio": "Walt Disney Productions",
+    "lesson": "The first full-length cel-animated feature in the US. It proved audiences would feel deeply for drawn characters — the same leap games make.",
+    "image": ""
+   },
+   {
+    "id": "f-totoro",
+    "name": "My Neighbor Totoro",
+    "emoji": "🌳",
+    "year": 1988,
+    "studio": "Studio Ghibli · Hayao Miyazaki",
+    "lesson": "Quiet, wonder-filled moments with no conflict. Cozy games borrow this: a world worth simply being in.",
+    "image": ""
+   },
+   {
+    "id": "f-lionking",
+    "name": "The Lion King",
+    "emoji": "🦁",
+    "year": 1994,
+    "studio": "Walt Disney Feature Animation",
+    "lesson": "Strong staging and silhouettes: hero on a cliff against the sky. Iconic compositions translate directly to key art and cut-scenes.",
+    "image": ""
+   },
+   {
+    "id": "f-toystory",
+    "name": "Toy Story",
+    "emoji": "🤠",
+    "year": 1995,
+    "studio": "Pixar",
+    "lesson": "The first entirely computer-animated feature film. Pixar picked toys partly because hard, simple surfaces suited early CG — choose subjects your tech does well.",
+    "image": ""
+   },
+   {
+    "id": "f-spirited",
+    "name": "Spirited Away",
+    "emoji": "🛁",
+    "year": 2001,
+    "studio": "Studio Ghibli · Hayao Miyazaki",
+    "lesson": "Won the Academy Award for Best Animated Feature. Every corner of the bathhouse world implies rules and history — environmental storytelling at its finest.",
+    "image": ""
+   },
+   {
+    "id": "f-shrek",
+    "name": "Shrek",
+    "emoji": "🧅",
+    "year": 2001,
+    "studio": "DreamWorks Animation",
+    "lesson": "Won the first-ever Oscar for Best Animated Feature. Subverting fairy-tale clichés shows how a fresh twist on a familiar genre feels new.",
+    "image": ""
+   },
+   {
+    "id": "f-nemo",
+    "name": "Finding Nemo",
+    "emoji": "🐠",
+    "year": 2003,
+    "studio": "Pixar",
+    "lesson": "Colour scripts plan the emotional colour of each scene — a technique game teams use to plan biomes and level mood.",
+    "image": ""
+   },
+   {
+    "id": "f-kungfupanda",
+    "name": "Kung Fu Panda",
+    "emoji": "🐼",
+    "year": 2008,
+    "studio": "DreamWorks Animation",
+    "lesson": "Shape language: round characters read as friendly, sharp characters as dangerous. A key tool for designing heroes and enemies.",
+    "image": ""
+   },
+   {
+    "id": "f-up",
+    "name": "Up",
+    "emoji": "🎈",
+    "year": 2009,
+    "studio": "Pixar",
+    "lesson": "The opening montage tells a lifetime without dialogue. Great proof that wordless storytelling can carry huge emotion.",
+    "image": ""
+   },
+   {
+    "id": "f-frozen",
+    "name": "Frozen",
+    "emoji": "❄️",
+    "year": 2013,
+    "studio": "Walt Disney Animation Studios",
+    "lesson": "Character-driven musical moments mark turning points. In games, music cues mark the same beats: boss phases, discoveries, victories.",
+    "image": ""
+   },
+   {
+    "id": "f-coco",
+    "name": "Coco",
+    "emoji": "💀",
+    "year": 2017,
+    "studio": "Pixar",
+    "lesson": "A world built from cultural research and a strong colour identity (marigold orange, neon nights). Authenticity makes fantasy worlds believable.",
+    "image": ""
+   },
+   {
+    "id": "f-spiderverse",
+    "name": "Spider-Man: Into the Spider-Verse",
+    "emoji": "🕷️",
+    "year": 2018,
+    "studio": "Sony Pictures Animation",
+    "lesson": "Mixed frame rates, halftone dots and comic panels proved 3D doesn't have to look realistic. Stylized rendering gives games a unique identity too.",
+    "image": ""
+   },
+   {
+    "id": "f-mariomovie",
+    "name": "The Super Mario Bros. Movie",
+    "emoji": "⭐",
+    "year": 2023,
+    "studio": "Illumination & Nintendo",
+    "lesson": "A game-to-film adaptation full of references to level design, power-ups and music — shows how strong game IP becomes a cross-media franchise.",
+    "image": ""
+   },
+   {
+    "id": "f-arcane",
+    "name": "Arcane (animated series)",
+    "emoji": "🔧",
+    "year": 2021,
+    "studio": "Fortiche · Riot Games",
+    "lesson": "A series based on a game's characters, with painterly 3D. It shows how deep character backstories can extend a game world into other media.",
+    "image": ""
+   }
+  ]
+ },
+ "tools": [
+  {
+   "cat": "Engines",
+   "items": [
+    [
+     "Godot",
+     "https://godotengine.org",
+     "Free & open source, great for 2D/3D"
+    ],
+    [
+     "Unity",
+     "https://unity.com",
+     "Huge ecosystem, mobile & 3D"
+    ],
+    [
+     "Unreal Engine",
+     "https://www.unrealengine.com",
+     "High-end 3D, Blueprints"
+    ],
+    [
+     "GDevelop",
+     "https://gdevelop.io",
+     "No-code, beginner friendly"
+    ],
+    [
+     "Roblox Studio",
+     "https://create.roblox.com",
+     "Build & publish to Roblox"
+    ]
+   ]
+  },
+  {
+   "cat": "2D & 3D Art",
+   "items": [
+    [
+     "Aseprite",
+     "https://www.aseprite.org",
+     "Pixel art & animation"
+    ],
+    [
+     "Pixelorama",
+     "https://orama-interactive.itch.io/pixelorama",
+     "Free pixel editor"
+    ],
+    [
+     "Krita",
+     "https://krita.org",
+     "Free painting"
+    ],
+    [
+     "Blender",
+     "https://www.blender.org",
+     "Free 3D modelling & animation"
+    ],
+    [
+     "MagicaVoxel",
+     "https://ephtracy.github.io",
+     "Voxel art"
+    ],
+    [
+     "Inkscape",
+     "https://inkscape.org",
+     "Free vector graphics"
+    ]
+   ]
+  },
+  {
+   "cat": "Sound & Music",
+   "items": [
+    [
+     "Bfxr",
+     "https://www.bfxr.net",
+     "Retro sound effects"
+    ],
+    [
+     "ChipTone",
+     "https://sfbgames.itch.io/chiptone",
+     "SFX generator"
+    ],
+    [
+     "Bosca Ceoil",
+     "https://boscaceoil.net",
+     "Simple music maker"
+    ],
+    [
+     "LMMS",
+     "https://lmms.io",
+     "Free music production"
+    ],
+    [
+     "Audacity",
+     "https://www.audacityteam.org",
+     "Audio editing"
+    ]
+   ]
+  },
+  {
+   "cat": "Design & Narrative",
+   "items": [
+    [
+     "Twine",
+     "https://twinery.org",
+     "Interactive stories"
+    ],
+    [
+     "Inky",
+     "https://www.inklestudios.com/ink",
+     "Narrative scripting"
+    ],
+    [
+     "Machinations",
+     "https://machinations.io",
+     "Game economy design"
+    ],
+    [
+     "Miro",
+     "https://miro.com",
+     "Whiteboard & flowcharts"
+    ],
+    [
+     "Tiled",
+     "https://www.mapeditor.org",
+     "Tile map editor"
+    ]
+   ]
+  },
+  {
+   "cat": "Project Management",
+   "items": [
+    [
+     "Trello",
+     "https://trello.com",
+     "Kanban boards"
+    ],
+    [
+     "Notion",
+     "https://www.notion.so",
+     "Docs & wikis"
+    ],
+    [
+     "HacknPlan",
+     "https://hacknplan.com",
+     "Built for game dev"
+    ],
+    [
+     "Milanote",
+     "https://milanote.com",
+     "Moodboards"
+    ]
+   ]
+  },
+  {
+   "cat": "Free Assets",
+   "items": [
+    [
+     "Kenney",
+     "https://kenney.nl",
+     "CC0 complete asset packs"
+    ],
+    [
+     "OpenGameArt",
+     "https://opengameart.org",
+     "Community library"
+    ],
+    [
+     "itch.io assets",
+     "https://itch.io/game-assets/free",
+     "Indie packs"
+    ],
+    [
+     "Quaternius",
+     "https://quaternius.com",
+     "Free stylized 3D"
+    ],
+    [
+     "CraftPix (free)",
+     "https://craftpix.net/freebies",
+     "2D packs"
+    ],
+    [
+     "game-icons.net",
+     "https://game-icons.net",
+     "Thousands of icons"
+    ]
+   ]
+  },
+  {
+   "cat": "Publish & Playtest",
+   "items": [
+    [
+     "itch.io",
+     "https://itch.io",
+     "Publish indie games"
+    ],
+    [
+     "Discord",
+     "https://discord.com",
+     "Community & feedback"
+    ],
+    [
+     "Google Forms",
+     "https://forms.google.com",
+     "Playtest surveys"
+    ]
+   ]
+  }
+ ],
+ "ideas": {
+  "genre": [
+   "platformer",
+   "top-down adventure",
+   "puzzle game",
+   "tower defense",
+   "farming sim",
+   "roguelike",
+   "racing game",
+   "rhythm game",
+   "board game",
+   "card battler",
+   "stealth game",
+   "city builder"
+  ],
+  "theme": [
+   "ghosts who collect candy",
+   "a lighthouse keeper",
+   "an overgrown city",
+   "a tiny restaurant",
+   "a sleepy dragon",
+   "lost socks",
+   "a desert caravan",
+   "a robot gardener",
+   "a floating island",
+   "a library at night",
+   "a bakery in space",
+   "a moss-covered dungeon"
+  ],
+  "twist": [
+   "gravity flips every 10 seconds",
+   "you can only move when the music plays",
+   "every enemy you defeat becomes a platform",
+   "the map is the inventory",
+   "you play as the villain",
+   "day and night swap the rules",
+   "two players share one character",
+   "you can't jump — only bounce",
+   "time only moves when you move",
+   "your health is also your currency"
+  ]
+ },
+ "badges": [
+  {
+   "id": "first",
+   "icon": "🌱",
+   "name": "First Steps",
+   "desc": "Complete your first lesson"
+  },
+  {
+   "id": "module",
+   "icon": "📗",
+   "name": "Module Master",
+   "desc": "Complete a full module"
+  },
+  {
+   "id": "lab",
+   "icon": "🧪",
+   "name": "Lab Rat",
+   "desc": "Play in the Game Feel Lab"
+  },
+  {
+   "id": "coins",
+   "icon": "🪙",
+   "name": "Coin Collector",
+   "desc": "Collect every coin in the Lab"
+  },
+  {
+   "id": "historian",
+   "icon": "🏛️",
+   "name": "Historian",
+   "desc": "Explore 10 Hall of Fame entries"
+  },
+  {
+   "id": "gdd",
+   "icon": "📜",
+   "name": "Documentarian",
+   "desc": "Save a Game Design Document"
+  },
+  {
+   "id": "spark",
+   "icon": "💡",
+   "name": "Idea Spark",
+   "desc": "Generate a game idea"
+  },
+  {
+   "id": "curator",
+   "icon": "🖼️",
+   "name": "Curator",
+   "desc": "Study 8 gallery pieces"
+  },
+  {
+   "id": "graduate",
+   "icon": "🎓",
+   "name": "Graduate",
+   "desc": "Complete every module"
+  },
+  {
+   "id": "hero",
+   "icon": "🦸",
+   "name": "Know Thyself",
+   "desc": "Find your hero archetype"
+  }
+ ],
+ "cast": [
+  {
+   "id": "nova",
+   "name": "Nova",
+   "role": "Explorer",
+   "color": "#2fd3c4",
+   "shape": "Teardrop hood",
+   "fantasy": "Curiosity. Every map edge is a promise.",
+   "design": "A lantern and a scarf give two motion cues; the teal hood stays readable in any biome."
+  },
+  {
+   "id": "bloop",
+   "name": "Bloop",
+   "role": "Mascot",
+   "color": "#5ee0b0",
+   "shape": "Circle",
+   "fantasy": "Pure friendliness — you want to protect it.",
+   "design": "The rounder the shape, the safer it feels. Big eyes and a single sprout make it easy to animate and draw."
+  },
+  {
+   "id": "shade",
+   "name": "Shade",
+   "role": "Stealth",
+   "color": "#8b7bff",
+   "shape": "Triangle",
+   "fantasy": "Unseen power and patience.",
+   "design": "Pointed hood, two blades and red slits for eyes: sharp shapes read as danger. The face is hidden so the player fills it in."
+  },
+  {
+   "id": "brakk",
+   "name": "Brakk",
+   "role": "Guardian",
+   "color": "#ff9a5a",
+   "shape": "Square",
+   "fantasy": "Being the wall your friends stand behind.",
+   "design": "Squares feel stable and heavy. Broad shoulders and a shield make the role obvious before any stat is shown."
+  },
+  {
+   "id": "ember",
+   "name": "Ember",
+   "role": "Adventurer",
+   "color": "#ff5d73",
+   "shape": "Diamond",
+   "fantasy": "Courage and growth over a long journey.",
+   "design": "Balanced proportions, a flowing scarf and a glowing blade: a hero designed to change and level up."
+  },
+  {
+   "id": "zip",
+   "name": "Zip",
+   "role": "Speedster",
+   "color": "#b8f34a",
+   "shape": "Lightning bolt",
+   "fantasy": "Momentum and flow.",
+   "design": "Leaning pose, goggles and speed lines. When the character is the mechanic, every design choice says 'fast'."
+  },
+  {
+   "id": "hex",
+   "name": "Hex",
+   "role": "Caster",
+   "color": "#d65cff",
+   "shape": "Tall triangle",
+   "fantasy": "Knowledge as power.",
+   "design": "A tall, narrow silhouette and a glowing staff tip: the brightest point on the character is where the magic comes from."
+  },
+  {
+   "id": "doc",
+   "name": "Doc",
+   "role": "Everyman",
+   "color": "#7ed36b",
+   "shape": "Rectangle",
+   "fantasy": "Someone just like you, in a world that responds.",
+   "design": "Low-poly, casual clothes, headphones: an ordinary avatar for life-sims and sandbox games where the player writes the story."
+  }
+ ],
+ "castQuiz": [
+  {
+   "q": "A new map opens. You…",
+   "a": [
+    [
+     "Run to the edge to see what's there",
+     "nova"
+    ],
+    [
+     "Find the fastest route through it",
+     "zip"
+    ],
+    [
+     "Check every shadow for secrets",
+     "shade"
+    ],
+    [
+     "Make sure the whole party is safe first",
+     "brakk"
+    ]
+   ]
+  },
+  {
+   "q": "Your favourite reward is…",
+   "a": [
+    [
+     "A rare spell book",
+     "hex"
+    ],
+    [
+     "A cute companion pet",
+     "bloop"
+    ],
+    [
+     "A legendary sword upgrade",
+     "ember"
+    ],
+    [
+     "A house you can decorate",
+     "doc"
+    ]
+   ]
+  },
+  {
+   "q": "The boss appears. You…",
+   "a": [
+    [
+     "Charge in — courage first",
+     "ember"
+    ],
+    [
+     "Hold the line so others can strike",
+     "brakk"
+    ],
+    [
+     "Dodge everything at full speed",
+     "zip"
+    ],
+    [
+     "Study its pattern, then strike once",
+     "shade"
+    ]
+   ]
+  },
+  {
+   "q": "Pick a game night:",
+   "a": [
+    [
+     "A cozy life sim",
+     "doc"
+    ],
+    [
+     "A colourful party game",
+     "bloop"
+    ],
+    [
+     "A huge open world",
+     "nova"
+    ],
+    [
+     "A deep strategy game",
+     "hex"
+    ]
+   ]
+  }
+ ],
+ "heroImages": [
+  "/images/64a2dcf7178675e3eca666961e5fed23.jpg",
+  "/images/260d34da2f408621cb1989b2f8c32645.jpg",
+  "/images/02dcfbefe90d72b020174944578e35bf.jpg",
+  "/images/ad47519e8a1ee6d5c4001c0450eb4562.jpg"
+ ]
+}

@@ -1,0 +1,20 @@
+{
+  "name": "game-academy",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Game Academy — bilingual (Arabic/English) game design learning platform with user and admin areas.",
+  "type": "module",
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "node --watch server/index.js",
+    "seed": "node server/seed.js",
+    "art": "node tools/build-art.mjs"
+  },
+  "engines": {
+    "node": ">=22.13"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^1.8.0",
+    "express": "^5.3.0"
+  }
+}

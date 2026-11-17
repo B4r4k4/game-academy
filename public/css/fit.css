@@ -1,0 +1,74 @@
+/* ===================================================================
+   Whole-image framing — loaded last.
+   Every framed picture shows in full (object-fit: contain) on top of a
+   blurred copy of itself, instead of being zoomed and cropped (cover).
+   !important is used deliberately: older layers (style/cinematic/film)
+   set cover, oversize offsets, hover zooms and parallax transforms on
+   the same <img> elements, and this layer must win over all of them.
+   =================================================================== */
+
+.fit { position: relative; display: block; overflow: hidden; background: #0b0c0e; width: 100%; height: 100%; }
+.fit > img { display: block; max-width: none !important; border: 0 !important; border-radius: 0 !important; animation: none !important; }
+.fit > .fit-bg { position: absolute !important; inset: -30px !important; width: calc(100% + 60px) !important; height: calc(100% + 60px) !important; object-fit: cover !important; filter: blur(26px) brightness(.5) saturate(1.2) !important; transform: none !important; }
+.fit > .fit-fg { position: relative !important; inset: auto !important; width: 100% !important; height: 100% !important; object-fit: contain !important; object-position: center !important; transform: none !important; filter: none !important; }
+
+/* ---------- Page banners: full key art on the end side ---------- */
+.page-head.has-bg::before { content: none; }
+.page-head.has-bg { min-height: 340px; }
+.ph-art { position: absolute !important; inset: 0; z-index: -2; background: var(--ink); }
+.ph-art > .fit-fg { box-sizing: border-box; padding: 22px max(16px, calc((100vw - var(--maxw)) / 2 + 16px)); object-position: right center !important; }
+html[dir="rtl"] .ph-art > .fit-fg { object-position: left center !important; }
+.page-head.has-bg::after { background: linear-gradient(var(--kdir), var(--ink) 0%, var(--ink) 30%, rgba(5, 6, 7, .55) 52%, rgba(5, 6, 7, 0) 70%); }
+
+/* ---------- Module page hero ---------- */
+.mh-art { position: absolute !important; inset: 0; }
+.mh-art > .fit-fg { box-sizing: border-box; padding: 18px; object-position: right center !important; }
+html[dir="rtl"] .mh-art > .fit-fg { object-position: left center !important; }
+html[dir] .module-hero::after { background: linear-gradient(var(--kdir), rgba(5, 6, 7, .94) 0%, rgba(5, 6, 7, .8) 40%, rgba(5, 6, 7, 0) 66%); }
+.module-hero { min-height: 360px; }
+.module-hero .inner { max-width: 58%; }
+
+/* ---------- Home feature cards: picture on top, text below ---------- */
+.feature { min-height: 0; justify-content: flex-start; }
+.feature .f-art { position: relative !important; inset: auto !important; height: 280px !important; }
+.feature .f-art::after { content: none !important; }
+.feature:hover .fit-fg { filter: brightness(1.06) !important; }
+.feature .f-body { background: #0b0c0e; }
+
+/* ---------- Learn module cards ---------- */
+.module-card .cover { height: 230px; }
+.module-card .cover::after { content: none; }
+
+/* ---------- Home hero film panels: the selected panel shows the whole frame ---------- */
+.kp.on { background: transparent; }
+.kp.on img { top: 0 !important; left: 0 !important; width: 100% !important; height: 100% !important; object-fit: contain !important; object-position: center !important; transform: none !important; animation: none !important; padding: 56px 0 120px; box-sizing: border-box; }
+
+/* ---------- Login / sign-up art ---------- */
+.auth-art > .fit { position: absolute; inset: 0; }
+.auth-art::after { background: linear-gradient(0deg, rgba(5, 6, 7, .35), transparent 30%); pointer-events: none; }
+
+/* ---------- Smaller frames ---------- */
+.gdd-ref { object-fit: contain !important; max-height: 360px !important; background: var(--bg-2); }
+.mini-gallery img { aspect-ratio: 3 / 4 !important; object-fit: contain !important; background: var(--bg-2); }
+.mini-gallery img:hover { transform: none !important; }
+.g-item:hover img { transform: none !important; }
+.ag-item img, .media-tile img, .hp-item img, .mod-row img, .img-field img, .lesson-card summary img { object-fit: contain !important; background: var(--bg-2); }
+.avatar img { object-position: center 20%; }
+
+/* ---------- Phones: stack picture above text instead of overlapping ---------- */
+@media (max-width: 760px) {
+  .page-head.has-bg { flex-direction: column; align-items: stretch; min-height: 0; }
+  .page-head.has-bg::after { content: none; }
+  .ph-art { position: relative !important; inset: auto; height: 260px; z-index: 0; }
+  .ph-art > .fit-fg, html[dir="rtl"] .ph-art > .fit-fg { padding: 14px; object-position: center !important; }
+  .ph-in { padding-top: 22px; }
+
+  .module-hero { flex-direction: column; align-items: stretch; min-height: 0; }
+  html[dir] .module-hero::after { content: none; }
+  .mh-art { position: relative !important; inset: auto; height: 240px; }
+  .mh-art > .fit-fg, html[dir="rtl"] .mh-art > .fit-fg { object-position: center !important; }
+  .module-hero .inner { max-width: none; background: #0b0c0e; }
+
+  .feature .f-art { height: 240px !important; }
+  .kp.on img { padding: 40px 0 110px; }
+}
